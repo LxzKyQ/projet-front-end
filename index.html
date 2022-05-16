@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Home </title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" type="image/png" href="img/favico.png" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <div class="menu">
+            <input type="checkbox" id="check">
+            <div class="logo">
+                <a href="#"><img src="img/logo.png"></a>
+            </div>
+            <ul>
+                <label class="btn cancel" for="check"><i class="fas fa-times"></i></label>
+                <li><a href="#">Personnages</a></li>
+                <li><a href="pages/temoinages.html">Témoinages</a></li>
+            </ul>
+            <label for="check" class="btn bars"><i class="fas fa-bars"></i></label>
+        </div>
+        </div>
+    </nav>
+    <div class="top">
+        <p class="memoire">Memoire restante de l'ordinateur ~<b id="result">unknown</b> GiB.</p>
+        <p id="info" ></p>
+        <p id="error" ></p>
+    </div>
+    <div class="centrer">
+        <div class="container" id="container">
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h3>Créez votre Personnages</h3>
+                        <label>
+                            <select id="selectperso">
+                                <option value="">Choisissez un personnage</option>
+                                <option id="option1" value="1">Clara Garcia</option>
+                                <option id="option2" value="2">Juan Cortez</option>
+                                <option id="option3" value="3">Diego Castillo</option>
+                                <option id="option4" value="4">Antón Castillo</option>
+                                <option id="option5" value="5">Dani Rojas</option>
+                            </select>
+                        </label>
+                        <label>
+                            <select id="selectniveau">
+                                <option value="">Choisissez le niveau du personnage</option>
+                                <option id="optionniveau1" value="1">Niv. 1</option>
+                                <option id="optionniveau2" value="2">Niv. 2</option>
+                                <option id="optionniveau3" value="3">Niv. 3</option>
+                                <option id="optionniveau4" value="4">Niv. 4</option>
+                                <option id="optionniveau5" value="5">Niv. 5</option>
+                            </select>
+                        </label>
+                        <a href="#" onclick="ajouter()">Ajouter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+</html>
