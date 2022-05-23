@@ -1,6 +1,5 @@
-// variable globales
-var mediaRecorder;
-var recordedBlobs;
+let mediaRecorder;
+let recordedBlobs;
 
 document.addEventListener("DOMContentLoaded", async () => {
     // elements html
@@ -107,8 +106,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // afficher la memoire restante
-    document.getElementById('result').innerHTML = navigator.deviceMemory || 'unknown'
+    document.getElementById('result').innerHTML = navigator.deviceMemory ?? 'unknown'
     setTimeout(() => {
-        document.getElementById('result').innerHTML = navigator.deviceMemory || 'unknown'
+        document.getElementById('result').innerHTML = navigator.deviceMemory ?? 'unknown'
     }, 10000);
 })

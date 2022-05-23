@@ -1,3 +1,13 @@
+// service worker pour le PWA
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").then(registration => {
+        console.log(registration);
+    }).catch((error)=> {
+        console.log("SW Registration Failed!");
+        console.log(error);
+    });
+}
+
 // list de tout les persos dans l ordre
 const listeperso = ['Clara Garcia', 'Juan Cortez', 'Diego Castillo', 'Antón Castillo', 'Dani Rojas'];
 
@@ -11,29 +21,31 @@ function ajouter() { // ajouter un personnage dans le session storage
             localStorage.setItem("personnages", JSON.stringify(value));
         } else { // ajouter le perso au tableau
             value = JSON.parse(localStorage.getItem("personnages"))
-            value.push({ "id": JSON.parse(localStorage.getItem("personnages"))[JSON.parse(localStorage.getItem("personnages")).length - 1].id + 1, "perso": perso, "niveau": niveau });
+            // on utilise le spread pour ajouter le nouvel élément à l'ancien tableau
+            value = [...value, { "id": JSON.parse(localStorage.getItem("personnages"))[JSON.parse(localStorage.getItem("personnages")).length - 1].id + 1, "perso": perso, "niveau": niveau }]
             localStorage.setItem("personnages", JSON.stringify(value));
         }
 
         const err = document.getElementById('error');
-        err.innerHTML = "";
+        err.innerHTML = ""; // reinitialiser le message d'erreur
 
         sessionStorage.setItem("selecteur", JSON.stringify({ // mettre les dernieres options choisies
             perso: perso,
             niveau: niveau
         }));
         selecteurDefaut(); // actualiser les options du selecteur
-    } else {
+    } else { // afficher l'erreur
         const err = document.getElementById('error');
         err.innerHTML = "Veuillez rentrer toutes les informations pour ajouter un personnage";
     }
 
-    montrerPerso();
+    montrerPerso(); // actualiser la liste des persos
 }
 
 function montrerPerso() { // afficher tout les personnages du session storage
     const container = document.getElementById("container"); // actualiser la div container
 
+    // mettre la card de creation en premier
     container.innerHTML = `<div class="card">
         <div class="box">
             <div class="content">
@@ -63,7 +75,7 @@ function montrerPerso() { // afficher tout les personnages du session storage
         </div>
     </div>`;
 
-    if (localStorage.getItem("personnages")) { // si il y a au moins un perso les afficher
+    if (localStorage.getItem("personnages")) { // si il y a au moins un perso -> les afficher
         const persotab = JSON.parse(localStorage.getItem("personnages"))
 
         persotab.forEach(element => { // boucle pour chaque perso
@@ -86,19 +98,17 @@ function montrerPerso() { // afficher tout les personnages du session storage
 }
 
 function supprimerPerso(id) { // supprimer le perso dans le local storage
-    if (localStorage.getItem("personnages")) {
-        const persotab = JSON.parse(localStorage.getItem("personnages"))
+    const persotab = JSON.parse(localStorage.getItem("personnages"))
 
-        persotab.forEach((element, index) => {
-            if (element.id == id) {
-                persotab.splice(index, 1); // supprime le perso du tableau
-            }
-        });
+    persotab.forEach((element, index) => {
+        if (element.id == id) {
+            persotab.splice(index, 1); // supprime le perso du tableau
+        }
+    });
 
-        localStorage.setItem("personnages", JSON.stringify(persotab)); // enregistre le nouveau tableau
-        montrerPerso()
-    }
-    selecteurDefaut() // actualiser les options du selecteur
+    localStorage.setItem("personnages", JSON.stringify(persotab)); // enregistre le nouveau tableau
+    montrerPerso();
+    selecteurDefaut(); // actualiser les options du selecteur
 }
 
 function changerPerso(id, perso, niv) { // afficher les options pour editer le personnage
@@ -138,7 +148,7 @@ function changerPersoStorage(id) { // editer le personnage dans le local storage
 
     persotab.forEach((element, index) => {
         if (element.id == id) {
-            var info = [element.perso, perso, element.niveau, niveau];
+            let info = [element.perso, perso, element.niveau, niveau];
             sessionStorage.setItem("edit", JSON.stringify(info))
             persotab[index] = { // remplacer les infos du perso
                 id: id,
@@ -161,9 +171,9 @@ function selecteurDefaut() { // mettre l'option par defaut du selecteur qui est 
 }
 
 function devicememory () { // afficher la memoire restante
-    document.getElementById('result').innerHTML = navigator.deviceMemory || 'unknown'
+    document.getElementById('result').innerHTML = navigator.deviceMemory ?? 'unknown'
     setTimeout(() => {
-        document.getElementById('result').innerHTML = navigator.deviceMemory || 'unknown'
+        document.getElementById('result').innerHTML = navigator.deviceMemory ?? 'unknown'
     }, 10000);
 }
 
