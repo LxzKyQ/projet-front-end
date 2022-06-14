@@ -172,7 +172,7 @@ function selecteurDefaut() { // mettre l'option par defaut du selecteur qui est 
 
 function devicememory () { // afficher la memoire restante
     document.getElementById('result').innerHTML = navigator.deviceMemory ?? 'unknown'
-    setTimeout(() => {
+    setTimeout(() => { // répéter la même action toutes les 10 secondes
         document.getElementById('result').innerHTML = navigator.deviceMemory ?? 'unknown'
     }, 10000);
 }

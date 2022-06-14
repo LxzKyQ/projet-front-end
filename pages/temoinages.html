@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Temoinage </title>
+    <meta name="theme-color" content="#e28515">
     <link rel="stylesheet" href="../css/temoinages.css">
     <link rel="icon" type="image/png" href="../img/favico.png" />
     <link rel="manifest" href="manifest.json">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="../js/fontawesomekit.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script src="../js/temoinage.js"></script>
 </head>
 
@@ -25,10 +25,9 @@
             <ul>
                 <label class="btn cancel" for="check"><i class="fas fa-times"></i></label>
                 <li><a href="../index.html">Personnages</a></li>
-                <li><a href="#">Témoinages</a></li>
+                <li><a href="./temoinages.html">Témoinages</a></li>
             </ul>
-            <label for="check" class="btn bars"><i class="fas fa-bars"></i></label>
-        </div>
+            <label for="check" class="btn bars"><i class="fas fa-bars burgericon"></i></label>
         </div>
     </nav>
     <div class="centrer">
@@ -45,7 +44,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="videobuttons">
             <button id="start">Allumer la camera</button>
             <button id="record" disabled>Commencer l'enregistrement</button>
             <button id="play" disabled>Regarder la video</button>

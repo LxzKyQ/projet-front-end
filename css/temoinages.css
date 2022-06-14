@@ -88,6 +88,10 @@ nav label.cancel {
   display: none;
 }
 
+.burgericon {
+  margin-right: 5px;
+}
+
 @media (max-width: 940px) {
   .menu ul {
     display: block;
@@ -143,6 +147,7 @@ body .centrer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
   margin-top: 4rem;
 }
 
@@ -210,14 +215,17 @@ h2 {
 }
 
 #gum {
+  margin-right: auto;
+  margin-left: auto;
   border-radius: 10px;
   border: dashed;
-  margin-right: 15px;
   width: 268px;
   height: 152px;
 }
 
 #recorded {
+  margin-right: auto;
+  margin-left: auto;
   border-radius: 10px;
   border: dashed;
   margin-left: 15px;
@@ -228,12 +236,14 @@ h2 {
 .allvideos {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   margin-top: 15px;
   margin-bottom: 5px;
 }
 
 .cameravideo {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   font-size: x-large;
@@ -241,6 +251,7 @@ h2 {
 
 .recordedvideo {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   font-size: x-large;
@@ -249,5 +260,19 @@ h2 {
 @media (max-width: 800px) {
   .allvideos {
     flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .videobuttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .videobuttons button {
+    width: 175px;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
   }
 }
